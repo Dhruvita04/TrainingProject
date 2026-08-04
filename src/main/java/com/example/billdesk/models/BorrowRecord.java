@@ -14,90 +14,49 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="borrow_records")
+@Table(name = "borrow_records")
 public class BorrowRecord {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="user_id", nullable = false)
-	private User user;
-	
-	@ManyToOne(fetch =FetchType.LAZY)
-	@JoinColumn(name="book_id", nullable=false)
-	private Book book;
-	
-	private LocalDate borrowDate;
-	
-	private LocalDate dueDate;
-	
-	private LocalDate returnDate;
-	
-	@Enumerated(EnumType.STRING)
-	private BorrowStatus status=BorrowStatus.BORROWED;
-	
-	public BorrowRecord() {
-		super();
-	}
 
-	public int getId() {
-		return id;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user; // the member the book is issued to
 
-	public User getUser() {
-		return user;
-	}
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "book_id", nullable = false)
+    private Book book;
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+    private LocalDate borrowDate;
+    private LocalDate dueDate;
+    private LocalDate returnDate;
 
-	public Book getBook() {
-		return book;
-	}
+    @Enumerated(EnumType.STRING)
+    private BorrowStatus status = BorrowStatus.BORROWED;
 
-	public void setBook(Book book) {
-		this.book = book;
-	}
+    public BorrowRecord() {
+    }
 
-	public LocalDate getBorrowDate() {
-		return borrowDate;
-	}
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
 
-	public void setBorrowDate(LocalDate borrowDate) {
-		this.borrowDate = borrowDate;
-	}
+    public User getUser() { return user; }
+    public void setUser(User user) { this.user = user; }
 
-	public LocalDate getDueDate() {
-		return dueDate;
-	}
+    public Book getBook() { return book; }
+    public void setBook(Book book) { this.book = book; }
 
-	public void setDueDate(LocalDate dueDate) {
-		this.dueDate = dueDate;
-	}
+    public LocalDate getBorrowDate() { return borrowDate; }
+    public void setBorrowDate(LocalDate borrowDate) { this.borrowDate = borrowDate; }
 
-	public LocalDate getReturnDate() {
-		return returnDate;
-	}
+    public LocalDate getDueDate() { return dueDate; }
+    public void setDueDate(LocalDate dueDate) { this.dueDate = dueDate; }
 
-	public void setReturnDate(LocalDate returnDate) {
-		this.returnDate = returnDate;
-	}
+    public LocalDate getReturnDate() { return returnDate; }
+    public void setReturnDate(LocalDate returnDate) { this.returnDate = returnDate; }
 
-	public BorrowStatus getStatus() {
-		return status;
-	}
-
-	public void setStatus(BorrowStatus status) {
-		this.status = status;
-	}
-	
-	
-
+    public BorrowStatus getStatus() { return status; }
+    public void setStatus(BorrowStatus status) { this.status = status; }
 }
